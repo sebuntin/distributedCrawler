@@ -1,0 +1,25 @@
+syntax = "proto3";
+package crawlerService;
+
+option go_package = ".;crawlerService";
+
+message Request {
+    string curUrl = 1;
+    string refUrl = 2;
+    SerializedParser parser = 3;
+}
+
+message SerializedParser {
+    string name = 1;
+    repeated string args = 2;
+}
+
+message Response {
+    repeated string items = 1;
+    repeated Request requests = 2;
+}
+
+service CrawlerService {
+    rpc Process (Request) returns (Response) {
+    };
+}

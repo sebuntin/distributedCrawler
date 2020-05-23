@@ -1,0 +1,17 @@
+syntax = "proto3";
+package saveService;
+
+option go_package=".;itemService";
+
+message SaveRequest {
+  string item=1;
+}
+
+message SaveResponse {
+  string status=1;
+}
+
+service SaveService {
+  rpc SaveItem (SaveRequest) returns (SaveResponse) {}
+}
+
