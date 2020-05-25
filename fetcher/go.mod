@@ -10,4 +10,9 @@ require (
 	golang.org/x/net v0.0.0-20200513185701-a91f0712d120
 	golang.org/x/text v0.3.2
 	moul.io/http2curl v1.0.0 // indirect
+	config v0.0.0
+)
+
+replace (
+    config v0.0.0 => ../config
 )

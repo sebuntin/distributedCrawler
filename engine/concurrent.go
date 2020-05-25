@@ -15,7 +15,7 @@ type Processor func(Request) (ParserResult, error)
 
 type ConcurrentEngine struct {
 	Scheduler        Scheduler
-	ItemChan         chan interface{}
+	ItemChan         chan Item
 	NumWorkers       int
 	RequestProcessor Processor
 }
@@ -44,8 +44,8 @@ func (e ConcurrentEngine) Run(seed ...Request) {
 			// 这里需要注意不能写成
 			// go func() {c <- item} ()
 			// 由于闭包函数内使用的外部变量,会受到外部影响。
-			go func(c chan interface{},
-				item interface{}) {
+			go func(c chan Item,
+				item Item) {
 				c <- item
 			}(e.ItemChan, item)
 		}
@@ -58,7 +58,8 @@ func (e ConcurrentEngine) Run(seed ...Request) {
 	}
 }
 
-func (e *ConcurrentEngine) creatWorker(scheduler Scheduler, out chan ParserResult) {
+func (e *ConcurrentEngine) creatWorker(scheduler Scheduler,
+	out chan ParserResult) {
 	in := scheduler.WorkChan()
 	go func() {
 		for {

@@ -45,13 +45,13 @@ func NewFuncParser(name string, args []string, p ParseFunc) *FuncParser {
 // ParserResult 定义解析器的输出结果
 type ParserResult struct {
 	Requests []Request
-	Items    []interface{}
+	Items    []Item
 }
 
 type Item struct {
-	Url     string
-	Id      string
-	PayLoad interface{}
+	Url     string      `json:"Url"`
+	Id      string      `json:"Id"`
+	PayLoad interface{} `json:"PayLoad"`
 }
 
 type NilParser struct {

@@ -2,6 +2,7 @@ package fetcher
 
 import (
 	"bufio"
+	"config"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -32,7 +33,8 @@ var UserAgentList = []string{"Mozilla/5.0 (compatible, MSIE 10.0, Windows NT, Di
 	"Mozilla/5.0 (iPhone, U, CPU iPhone OS 4_3_3 like Mac OS X, en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5",
 	"MQQBrowser/26 Mozilla/5.0 (Linux, U, Android 2.3.7, zh-cn, MB200 Build/GRJ22, CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"}
 
-var rateLimiter = time.Tick(1000 * time.Millisecond)
+var rateLimiter = time.Tick(
+	time.Second / time.Duration(config.Qps))
 
 //从上面列表中随机获取一个User-Agent
 func GetRandomUserAgent() string {
@@ -45,7 +47,7 @@ func Fetch(url ...string) ([]byte, error) {
 	<-rateLimiter
 	request, err := http.NewRequest("GET", url[0], nil)
 	if err != nil {
-		log.Print(err.Error())
+		return nil, err
 	}
 	request.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
 	request.Header.Add("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3")

@@ -16,7 +16,7 @@ func ParseBookTag(content []byte, opt ...string) engine.ParserResult {
 	for _, m := range submatchs {
 		item := string(m[2])
 		suffix := string(m[1])
-		result.Items = append(result.Items, item)
+		result.Items = append(result.Items, engine.Item{Url: PREFIX + suffix, Id: item})
 		result.Requests = append(result.Requests, engine.Request{
 			CurURL: PREFIX + suffix,
 			RefURL: opt[0],

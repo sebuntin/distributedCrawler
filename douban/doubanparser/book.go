@@ -49,7 +49,7 @@ func ParseBookInfo(content []byte, opt ...string) engine.ParserResult {
 	bookinfo.DoubanScore = score
 	bookinfo.PageNum = extractInt(content, PageNumRe)
 	return engine.ParserResult{
-		Items: []interface{}{engine.Item{Url: opt[0], Id: bookid, PayLoad: bookinfo}},
+		Items: []engine.Item{{Url: opt[0], Id: bookid, PayLoad: bookinfo}},
 	}
 }
 

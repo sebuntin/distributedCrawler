@@ -25,7 +25,7 @@ func ParseBookList(content []byte, opt ...string) engine.ParserResult {
 		// 保证闭包数据的正确性，需要使用局部变量逃逸
 		itemURL := string(submatchs[i][1])
 		itemName := string(submatchs[i][2])
-		result.Items = append(result.Items, string(submatchs[i][2]))
+		result.Items = append(result.Items, engine.Item{Url: itemURL, Id: itemName})
 		result.Requests = append(result.Requests, engine.Request{
 			CurURL: itemURL,
 			RefURL: opt[0],

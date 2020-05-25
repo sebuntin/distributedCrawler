@@ -2,6 +2,8 @@ package main
 
 import (
 	. "config"
+	"flag"
+	"fmt"
 	. "itemService"
 	"log"
 	"net"
@@ -10,10 +12,18 @@ import (
 	"google.golang.org/grpc"
 )
 
-const ITEM_PORT = ":1234"
+//const ITEM_PORT = ":1234"
+var port = flag.Int("port", 0,
+	"the port for me to listen on")
 
 func main() {
 	//端口
+	flag.Parse()
+	//端口
+	if *port == 0 {
+		fmt.Println("must specify a port")
+		return
+	}
 	rpcServer := grpc.NewServer()
 	client, err := elastic.NewClient()
 	if err != nil {
@@ -26,11 +36,12 @@ func main() {
 	}
 	RegisterSaveServiceServer(rpcServer, service)
 
-	conn, err := net.Listen("tcp", ITEM_PORT)
+	conn, err := net.Listen("tcp",
+		fmt.Sprintf(":%d", *port))
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("Item Service start success ... PORT %s\n", ITEM_PORT)
+	log.Printf("Item Service start success ... PORT :%d\n", *port)
 	err = rpcServer.Serve(conn)
 	if err != nil {
 		log.Fatalf("Item Service: error %s\n", err.Error())

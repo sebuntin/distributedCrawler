@@ -1,7 +1,6 @@
 package persist
 
 import (
-	"config"
 	"context"
 	"encoding/json"
 	"engine"
@@ -12,24 +11,24 @@ import (
 	"google.golang.org/grpc"
 )
 
-func ItemSaver() chan interface{} {
+func ItemSaver(host int) chan engine.Item {
 	//client, err := elastic.NewClient()
-	conn, err := grpc.Dial(fmt.Sprintf(":%d", config.ItemSaverPort), grpc.WithInsecure())
+	conn, err := grpc.Dial(fmt.Sprintf(":%d", host), grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
 	// get rpc client
 	client := NewSaveServiceClient(conn)
-	out := make(chan interface{})
+	out := make(chan engine.Item)
 	go func() {
 		count := 0
 		for {
 			item := <-out
 			count++
 			log.Printf("Item Saver: got item #%d, %v", count, item)
-			if book, ok := item.(engine.Item); ok {
+			if item.PayLoad != nil {
 				// call rpc to save item
-				itemStr, err := json.Marshal(book)
+				itemStr, err := json.Marshal(item)
 				if err != nil {
 					log.Printf("Item Saver: error saving item #%v, %v\n", item, err)
 				}

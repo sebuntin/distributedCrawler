@@ -4,15 +4,15 @@ import "encoding/json"
 
 // douban book
 type Book struct {
-	Name        string
-	Author      string
-	Press       string
-	OrigName    string
-	PageNum     int
-	Price       string
-	DoubanScore float64
-	BriefIntro  string
-	AuthorIntro string
+	Name        string  `json:"Name"`
+	Author      string  `json:"Author"`
+	Press       string  `json:"Press"`
+	OrigName    string  `json:"OrigName"`
+	PageNum     int     `json:"PageNum"`
+	Price       string  `json:"Price"`
+	DoubanScore float64 `json:"DoubanScore"`
+	BriefIntro  string  `json:"BriefIntro"`
+	AuthorIntro string  `json:"AuthorIntro"`
 }
 
 func FromJsonObj(o interface{}) (Book, error) {
