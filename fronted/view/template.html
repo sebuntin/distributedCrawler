@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>豆瓣-爬虫</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <div class="search-box" align="middle">
+                    <!--提交get-->
+                    <form method="get">
+                        <!--此处输入搜索语句-->
+
+                        <input placeholder="请输入关键词进行检索" type="text" maxlength="100" value="{{.Query}}" name="q">
+                        <!--<button type="submit" class="btn btn-info" style="text-align:center;display:inline;height:40px;">搜索</button>-->
+                        <button type="submit" class="btn">搜索</button>
+                    </form>
+                </div>
+                <div align="middle">
+                    <h7 class="search-result">共为你找到相关结果约为{{.Hits}}个，显示从{{.Start}}起共{{len .Items}}个</h7>
+                </div>
+
+                <table class="table-responsive">
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column_start">书名</th>
+                        <th class="column">作者</th>
+                        <th class="column">出版社</th>
+                        <th class="column">原作名</th>
+                        <th class="column">页数</th>
+                        <th class="column">价格</th>
+                        <th class="column">豆瓣评分</th>
+                        <th class="column">简介</th>
+                        <th class="column">作者简介</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{range .Items}}
+                        <tr>
+                            <td class="column_start"><a href="{{.Url}}" target="_blank">{{.PayLoad.Name}}</a></td>
+                            {{with .PayLoad}}
+                                <td class="column">{{.Author}}</td>
+                                <td class="column">{{.Press}}</td>
+                                <td class="column">{{.OrigName}}</td>
+                                <td class="column">{{.PageNum}}</td>
+                                <td class="column">{{.Price}}</td>
+                                <td class="column">{{.DoubanScore}}</td>
+                                <td class="column"><textarea class="form-control" rows="3">{{.BriefIntro}}</textarea></td>
+                                <td class="column"><textarea class="form-control" rows="3">{{.AuthorIntro}}</textarea></td>
+                            {{end}}
+                        </tr>
+                    {{else}}
+                        <div style="text-align:center">
+                            <h6 class="search-result">没有找到相关书籍</h6>
+                        </div>
+                    {{end}}
+                    </tbody>
+                </table>
+                <!--执行上下页-->
+                <div align="middle">
+                    <!--上一页不能为负-->
+                    <a href="search?q={{.Query}}&from=0">首页...</a>
+                    {{if ge .PrevFrom 0}}
+                        <a href="search?q={{.Query}}&from={{.PrevFrom}}">上一页</a>
+                    {{end}}
+                    <a href="search?q={{.Query}}&from={{.NextFrom}}">下一页</a>
+                    <a href="search?q={{.Query}}&from={{.LastFrom}}">...尾页</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <hr>
+            <p>Go语言爬虫项目产品展示 @<a href="https://github.com/sebuntin">sebuntin</a></p>
+        </footer>
+    </div>
+
+</div>
+
+
+<!--===============================================================================================-->
+<script src="static/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="static/bootstrap/js/popper.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="static/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+</body>
+</html>

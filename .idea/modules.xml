@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/distributedCrawler.iml" filepath="$PROJECT_DIR$/distributedCrawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpcsupport/rpcsupport.iml" filepath="$PROJECT_DIR$/rpcsupport/rpcsupport.iml" />
+    </modules>
+  </component>
+</project>

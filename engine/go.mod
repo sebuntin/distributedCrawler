@@ -4,10 +4,10 @@ go 1.14
 
 require (
     fetcher v0.0.0
-    config v0.0.0 // indirect
+    config v0.0.0
 )
 
 replace (
-    fetcher v0.0.0 => ../fetcher
-    config v0.0.0 => ../config
+	config v0.0.0 => ../config
+	fetcher v0.0.0 => ../fetcher
 )

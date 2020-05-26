@@ -12,6 +12,12 @@ const (
 	// ElasticSearch
 	ElasticIndex = "douban_book"
 
+	// Fronted
+	Fronted = 8888
+	// Template File Path
+	TemplateFilePaht = "D:\\go_web\\distributedCrawler\\fronted\\view\\template.html"
+	View             = "D:\\go_web\\distributedCrawler\\fronted\\view"
+
 	// Rate Limiting
 	Qps = 20
 )
