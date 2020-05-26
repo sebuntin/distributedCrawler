@@ -25,8 +25,8 @@ const (
 	// Fronted
 	Fronted = 8888
 	// Template File Path
-    TemplateFilePaht = "{YOUR_PATH}\\distributedCrawler\\fronted\\view\\template.html"
-    View             = "{YOUR_PATH}\\distributedCrawler\\fronted\\view"
+    	TemplateFilePaht = "{YOUR_PATH}\\distributedCrawler\\fronted\\view\\template.html"
+    	View             = "{YOUR_PATH}\\distributedCrawler\\fronted\\view"
 
 	// Rate Limiting
 	Qps = 20
@@ -55,15 +55,15 @@ const (
    启动爬虫服务，--port 为爬虫服务的端口号，可以开启多个服务
    
    ```shell
-./crawler --port 9001
+   ./crawler --port 9001
    ./crawler --port 9002
-./crawler --port 9003
+   ./crawler --port 9003
    ```
    
    启动成功效果如下：
 
    ```
-❯ .\crawler.exe --port 9000
+   .\crawler.exe --port 9000
    2020/05/26 17:51:22 Crawler Service start success ... PORT 9000
    ```
    
@@ -108,4 +108,5 @@ const (
    编译成功
 
    ![](D:\go_web\distributedCrawler\pic\buil.png)
+
 
