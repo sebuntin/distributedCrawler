@@ -85,13 +85,13 @@ const (
    
    浏览器访问本地端口 8888，得到如下展示页面
    
-   ![](D:\go_web\distributedCrawler\pic\豆瓣爬虫.png)
+   ![](https://github.com/sebuntin/distributedCrawler/blob/master/pic/豆瓣爬虫.png)
    
    
    
    搜索关键字，"阿加莎"，得到如下结果
    
-   ![](D:\go_web\distributedCrawler\pic\frontedpage.png)
+   ![](https://github.com/sebuntin/distributedCrawler/blob/master/pic/frontedpage.png)
    
    
    
@@ -109,6 +109,6 @@ const (
 
    编译成功
 
-   ![](D:\go_web\distributedCrawler\pic\buil.png)
+   ![](https://github.com/sebuntin/distributedCrawler/blob/master/pic/buil.png)
 
 
