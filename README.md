@@ -1,5 +1,7 @@
 ## 分布式豆瓣图书数据爬虫
 
+本项目来自于慕课网讲师ccmous的 _Google资深工程师深度讲解Go语言_ 课程，课程地址为:[here](https://coding.imooc.com/class/180.html)
+
 ### 安装依赖
 
 * 本项目使用 Elastic Search 作为数据存储
