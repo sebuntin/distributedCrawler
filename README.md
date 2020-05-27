@@ -1,5 +1,7 @@
 ## 分布式豆瓣图书数据爬虫
 
+本项目来自于慕课网讲师ccmous的 _[Google资深工程师深度讲解Go语言](https://coding.imooc.com/class/180.html)_ 课程
+
 ### 安装依赖
 
 * 本项目使用 Elastic Search 作为数据存储
@@ -25,8 +27,8 @@ const (
 	// Fronted
 	Fronted = 8888
 	// Template File Path
-    TemplateFilePaht = "{YOUR_PATH}\\distributedCrawler\\fronted\\view\\template.html"
-    View             = "{YOUR_PATH}\\distributedCrawler\\fronted\\view"
+    	TemplateFilePaht = "{YOUR_PATH}\\distributedCrawler\\fronted\\view\\template.html"
+    	View             = "{YOUR_PATH}\\distributedCrawler\\fronted\\view"
 
 	// Rate Limiting
 	Qps = 20
@@ -55,15 +57,15 @@ const (
    启动爬虫服务，--port 为爬虫服务的端口号，可以开启多个服务
    
    ```shell
-./crawler --port 9001
+   ./crawler --port 9001
    ./crawler --port 9002
-./crawler --port 9003
+   ./crawler --port 9003
    ```
    
    启动成功效果如下：
 
    ```
-❯ .\crawler.exe --port 9000
+   .\crawler.exe --port 9000
    2020/05/26 17:51:22 Crawler Service start success ... PORT 9000
    ```
    
@@ -83,13 +85,13 @@ const (
    
    浏览器访问本地端口 8888，得到如下展示页面
    
-   ![](D:\go_web\distributedCrawler\pic\豆瓣爬虫.png)
+   ![页面展示](https://github.com/sebuntin/distributedCrawler/blob/master/pic/豆瓣爬虫.png)
    
    
    
    搜索关键字，"阿加莎"，得到如下结果
    
-   ![](D:\go_web\distributedCrawler\pic\frontedpage.png)
+   ![搜索效果](https://github.com/sebuntin/distributedCrawler/blob/master/pic/frontedpage.png)
    
    
    
@@ -107,5 +109,6 @@ const (
 
    编译成功
 
-   ![](D:\go_web\distributedCrawler\pic\buil.png)
+   ![编译](https://github.com/sebuntin/distributedCrawler/blob/master/pic/buil.png)
+
 
