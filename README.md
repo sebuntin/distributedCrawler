@@ -1,6 +1,6 @@
 ## 分布式豆瓣图书数据爬虫
 
-本项目来自于慕课网讲师ccmous的 _[Google资深工程师深度讲解Go语言](https://coding.imooc.com/class/180.html)_ 课程，课程地址为:
+本项目来自于慕课网讲师ccmous的 _[Google资深工程师深度讲解Go语言](https://coding.imooc.com/class/180.html)_ 课程
 
 ### 安装依赖
 
